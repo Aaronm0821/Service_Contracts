@@ -1,0 +1,28 @@
+<!-- [ Striped-Hover-table ] start -->
+<div class="table-responsive">
+	<table id="{{table_id}}" class="table table-striped">
+		<thead>
+		<tr>
+			{%if index_col%}
+			<th>#</th>
+			{%endif%}
+			{% for header in table_dictionary['columns'] %}
+			<th>{{header}}</th>
+			{%endfor%}
+		</tr>
+		</thead>
+		<tbody>
+		{% for row in table_dictionary['data']%}
+		<tr>
+			{%if index_col%}
+			<th>{{table_dictionary['index'][loop.index0]}}</th>
+			{%endif%}
+			{% for col in row %}
+			<td>{{ col }}</td>
+			{%endfor%}
+		</tr>
+		{%endfor%}
+		</tbody>
+	</table>
+</div>
+<!-- [ Striped-Hover-table ] end -->

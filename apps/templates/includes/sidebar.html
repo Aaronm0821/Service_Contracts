@@ -1,0 +1,83 @@
+<!-- [ navigation menu ] start -->
+<nav class="pcoded-navbar">
+    <div class="navbar-wrapper">
+        <div class="navbar-brand header-logo">
+            <a href="/" class="b-brand">
+                <div class="b-bg">
+                    <img src="{{ config.ASSETS_ROOT }}/images/logo.png"
+                         class="randox-logo"
+                    >
+                </div>
+                <span class="b-title">Randox</span>
+            </a>
+            <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+        </div>
+        <div class="navbar-content scroll-div">
+            <ul class="nav pcoded-inner-navbar">
+                <li class="nav-item pcoded-menu-caption">
+                    <label>Navigation</label>
+                </li>
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item {% if 'home' in segment %} active {% endif %}">
+                    <a href="{{url_for('home_bp.home')}}" class="nav-link "><span
+                            class="pcoded-micon"><i class="feather icon-home"></i></span>
+                        <span class="pcoded-mtext">Home</span></a>
+                </li>
+
+                <li class="nav-item pcoded-menu-caption">
+                    <label>Customer</label>
+                </li>
+
+                <li class="nav-item {% if 'customer_search' in segment %} active {% endif %}">
+                    <a href="{{url_for('customers_bp.customer_search')}}" class="nav-link "><span
+                            class="pcoded-micon"><i class="feather icon-search"></i></span>
+                        <span class="pcoded-mtext">Search Customers</span></a>
+                </li>
+
+                <li class="nav-item {% if 'customer_add' in segment %} active {% endif %}">
+                    <a href="{{url_for('customers_bp.customer_add')}}" class="nav-link "><span
+                            class="pcoded-micon"><i class="feather icon-user-plus"></i></span>
+                        <span class="pcoded-mtext">Add New Customer</span></a>
+                </li>
+
+                <li class="nav-item {% if 'customer_update' in segment %} active {% endif %}">
+                    <a href="{{url_for('customers_bp.customer_update')}}" class="nav-link "><span
+                            class="pcoded-micon"><i class="feather icon-edit"></i></span>
+                        <span class="pcoded-mtext">Update Customer</span></a>
+                </li>
+
+
+                <li class="nav-item pcoded-menu-caption">
+                    <label>Account</label>
+                </li>
+                <li data-username="Authentication Sign up Reset password Change password"
+                    class="nav-item pcoded-hasmenu">
+                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
+                            class="feather icon-lock"></i></span><span
+                            class="pcoded-mtext">Authentication</span></a>
+                    <ul class="pcoded-submenu">
+                        {% if user.has_role("Manager") or user.has_role("Dev") %}
+                        <li class=""><a href="{{ url_for('auth_bp.sign_up') }}" class="">Create New User</a></li>
+                        <li class=""><a href="{{ url_for('auth_bp.change_access') }}" class="">Change User's Access</a>
+                        </li>
+                        <li class=""><a href="{{ url_for('auth_bp.reset_pwd') }}" class="">Reset Password</a></li>
+                        {% endif %}
+                        <li class=""><a href="{{ url_for('auth_bp.change_pwd') }}" class="">Change Password</a></li>
+                    </ul>
+                </li>
+
+                <li data-username="Disabled Menu" class="nav-item">
+                    <a href="{{ url_for('auth_bp.logout') }}" class="nav-link">
+                        <span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">Logout</span>
+                    </a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- [ navigation menu ] end -->

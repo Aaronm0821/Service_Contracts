@@ -1,0 +1,32 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-content">
+        <div class="card">
+            <div class="card-body text-center">
+                <div class="mb-4">
+                    <i class="feather icon-unlock auth-icon"></i>
+                </div>
+                <h3 class="mb-4">Login</h3>
+
+                <form method="post">
+                    <div class="input-group mb-3">
+                        <label class="form-control" for="email">Email Address</label>
+                        <input class="form-control" type="email" id="email" name="email" placeholder="joe.bloggs@randox.com" required/>
+                    </div>
+                    <div class="input-group mb-4">
+                        <label class="form-control" for="password">Password</label>
+                        <input class="form-control" type="password" id="password" name="password"
+                            placeholder="*********" required/>
+                    </div>
+                    <button type="submit" name="login" class="btn btn-primary shadow-2 mb-4">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

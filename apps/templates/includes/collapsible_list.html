@@ -1,0 +1,26 @@
+<div class="col-sm-12">
+    {%if list_title%}
+    <h5 class="mb-3">{{list_title}}</h5>
+    {%endif%}
+    <hr>
+    <div class="accordion" id='{{"collapsible-list" if not list_id else list_id}}'>
+        {%for list_item in list_information%}
+        <div class="card">
+            <div class="card-header" id="heading{{loop.index0}}">
+                <h5 class="mb-0">
+                    <a href="#!" class="collapsed" data-toggle="collapse" data-target="#collapse{{loop.index0}}" aria-expanded="true"
+                       aria-controls="collapse{{loop.index0}}">
+                        {%if list_names%}
+                            {{list_names[loop.index0]}}
+                        {%else%}
+                            Item #{{loop.index}}
+                        {%endif%}
+                    </a>
+                </h5>
+            </div>
+            <div id="collapse{{loop.index0}}" class="card-body collapse" aria-labelledby="heading{{loop.index0}}"
+                 data-parent='#{{"collapsible-list" if not list_id else list_id}}'>{{list_item}}</div>
+        </div>
+        {%endfor%}
+    </div>
+</div>

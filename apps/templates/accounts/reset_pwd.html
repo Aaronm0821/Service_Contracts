@@ -1,0 +1,49 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Reset Password{% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<section class="pcoded-main-container">
+	<div class="pcoded-wrapper pcoded-content pcoded-inner-content main-body">
+		<!-- [Place Forms Here] -->
+		<form class="page-wrapper card" method="POST">
+			<div class="card-header">
+				<h5>Account Management: Reset User's Password</h5>
+			</div>
+			<div class="card-body row">
+				<!-- Place Form Groups Here -->
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="idiot">Which user forgot their password</label>
+                        <!-- TODO: fetvh user from db, not display all users -->
+						<input class="form-control" type="password" id="user_email" name="user_email" required />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="new_password">Password</label>
+						<input class="form-control" type="password" id="new_password" name="new_password" required />
+					</div>
+					<div class="form-group">
+						<label for="confirm_password">Password (Confirm)</label>
+						<input class="form-control" type="password" id="confirm_password" name="confirm_password" required />
+					</div>
+				</div>
+			</div>
+			<div class="card-footer text-right">
+				<button type="submit" class="btn btn-primary">Change Password</button>
+			</div>
+		</form>
+	</div>
+</section>
+<!-- [ Main Content ] end -->
+
+{% endblock %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

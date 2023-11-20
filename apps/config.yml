@@ -1,0 +1,14 @@
+
+DEV:
+  DB_SERVER: RDX-SQL-DEV03
+  DB_NAME: RHUSA_Service_Contracts_DEV
+  
+TEST:
+  DB_SERVER: 
+  DB_NAME: 
+
+PROD:
+  DB_SERVER: 
+  DB_NAME: 
+
+

@@ -1,0 +1,47 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Change Password{% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<section class="pcoded-main-container">
+	<div class="pcoded-wrapper pcoded-content pcoded-inner-content main-body">
+		<!-- [Place Forms Here] -->
+		<form class="page-wrapper card" method="POST">
+			<div class="card-header"><h5>Change Password</h5></div>
+			<div class="card-body row">
+				<!-- Place Form Groups Here -->
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="password1">Old Password</label>
+						<input type="password" class="form-control" id="password1" name="password1" required />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="password2">New Password</label>
+						<input class="form-control" type="password" id="password2" name="password2" required />
+					</div>
+					<div class="form-group">
+						<label for="password3">New Password (Confirm)</label>
+						<input class="form-control" type="password" id="password3" name="password3"  required />
+					</div>
+
+				</div>
+			</div>
+			<div class="card-footer text-right">
+				<button type="submit" class="btn btn-primary">Change Password</button>
+			</div>
+		</form>
+	</div>
+</section>
+<!-- [ Main Content ] end -->
+
+{% endblock %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

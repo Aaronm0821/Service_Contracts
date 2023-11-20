@@ -1,0 +1,44 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Change Access{% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<section class="pcoded-main-container">
+	<div class="pcoded-wrapper pcoded-content pcoded-inner-content main-body">
+		<!-- [Place Forms Here] -->
+		<form class="page-wrapper card" method="POST">
+			<div class="card-header"><h5>Change User's Role</h5></div>
+			<div class="card-body row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="user">Users</label>
+                        <!-- TODO: Fetch User from DB once obtained can display the list of that users current roles  -->
+					</div>
+					<div class="form-group">
+						<label for="current-role">Selected User's Current Roles</label>
+                        <!-- TODO all available roles, tick if selected user has the role -->
+					</div>
+				</div>
+			</div>
+			<div class="card-footer text-right">
+				<button type="submit" class="btn btn-primary">Change Access</button>
+			</div>
+		</form>
+	</div>
+</section>
+<!-- [ Main Content ] end -->
+
+{% endblock %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+	const roles = {{ role_list|tojson }};
+</script>
+<script src="{{ config.ASSETS_ROOT }}/js/pages/change-access.js"></script>
+{% endblock javascripts %}

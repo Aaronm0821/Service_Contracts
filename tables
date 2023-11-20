@@ -1,0 +1,57 @@
+Create Table Reps(
+id int identity(1,1) primary key,
+rep_first_name varchar(30) not null,
+rep_last_name varchar(30) not null,
+rep_email varchar(50) not null
+)
+
+Create Table Customer(
+id int identity(1,1) primary key,
+customer_name varchar(100) not null,
+department varchar(20) null,
+location varchar(50),
+rep_id int foreign key references Reps(id)
+)
+
+Create Table Machines(
+id int identity(1,1) primary key,
+machine_type varchar(50) null,
+serial_number varchar(20) null,
+install_date DateTime null,
+site_survey_OCC varchar(50) null,
+install_OCC varchar(50) null,
+customer_id int foreign key references Customer(id)
+)
+
+Create Table Contracts(
+id int identity(1,1) primary key,
+service_contract varchar(20) not null,
+start_date DateTime null,
+end_date DateTime null,
+last_PM DateTime null,
+next_PM DateTime null,
+machine_id int foreign key references Machines(id)
+)
+
+Create Table Notes(
+id int identity(1,1) primary key,
+note nvarchar(200) null,
+machines_id int foreign key references Machines(id)
+)
+
+Create Table Roles(
+RoleTitle varchar(20) not null
+)
+
+Create Table Users(
+id int primary key not null,
+UserEmail varchar(50) not null,
+PasswordHash varchar(20) not null,
+FirstName varchar(20) not null,
+LastName varchar(20) not null,
+IsActive bit null
+Roles varchar(20) not null foreign key references Roles(RoleTitle)
+)
+
+
+

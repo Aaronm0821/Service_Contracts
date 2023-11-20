@@ -1,0 +1,9 @@
+{%if chart_title %}
+<div class="card-header">
+    <h5>{{chart_title}}</h5>
+</div>
+{%endif%}
+<div class="card-block">
+    <div class="{{'ChartShadow' if chart_shadow}}"
+            id="{{chart_id}}"></div>
+</div>

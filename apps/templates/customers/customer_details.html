@@ -1,0 +1,136 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+{% block content %}
+<!-- [ Main Content ]  -->
+<h1>Customer</h1>
+<section class="pcoded-main-container">
+    <div class="pcoded-wrapper pcoded-content pcoded-inner-content main-body">
+        <!-- [Place Forms Here] -->
+        <form class="page-wrapper card" method="POST">
+            <div class="card-header">
+                <h5>Customer Details</h5>
+            </div>
+            <div class="card-body row">
+                <div class="col-md-6">
+
+                    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" data-bs-toggle="tab"
+                               href="#service-locations-tab">Locations</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" data-bs-toggle="tab" href="#machines-tab">Machines</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" data-bs-toggle="tab"
+                               href="#contracts-tab"
+                            >Contracts
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" data-bs-toggle="tab"
+                               href="#notes-tab"
+                            >Notes
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="tabs-contents">
+
+                    <div class="tab-pane fade show active" id="service-locations-tab">
+                        <p><label>Customer Name:</label><input placeholder="Customer Name"></p>
+                        <p><label>Department:</label><input placeholder="Department" oninput="''"></p>
+                        <p><label>Location:</label><input placeholder="Location" oninput="''"></p>
+
+                    </div>
+
+
+                    <div class="tab-pane fade" id="machines-tab">
+                        <p><label for="machine-type">Machine Type:</label>
+                            <select name="machine-type" id="machine-type">
+                                <option value="investigator">Investigator</option>
+                                <option value="multistat">Multistat</option>
+                                <option value="ev">EV</option>
+
+                            </select>
+
+                        </p>
+                        <p><label>Serial Number:</label><input placeholder="Serial Number"
+                                                               oninput="this.className = ''"></p>
+                        <p><label>Install Date:</label><input type="date" oninput="this.className = ''"></p>
+                        <p><label>Site Survey OCC:</label><input placeholder="Site Survey OCC"
+                                                                 oninput="this.className = ''">
+                        </p>
+                        <p><label>Install OCC:</label><input placeholder="Install OCC" oninput="this.className = ''">
+                        </p>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="contracts-tab">
+                        <label for="Gold">Gold
+                            <input type="checkbox" id="Gold" name="Gold" value="Gold">
+                        </label>
+
+                        <label for="Bronze">Bronze
+                            <input type="checkbox" id="Bronze" name="Bronze" value="Bronze">
+                        </label>
+
+                        <label for="Warranty">Warranty
+                            <input type="checkbox" id="Warranty" name="Warranty" value="Warranty">
+                        </label>
+
+                        <label for="Reagent">Reagent
+                            <input type="checkbox" id="Reagent" name="Reagent" value="Reagent">
+                        </label>
+
+                        <label for="ARDS">ARDS
+                            <input type="checkbox" id="ARDS" name="ARDS" value="ARDS">
+                        </label>
+
+                        <label for="Remi">Remi
+                            <input type="checkbox" id="Remi" name="Remi" value="Remi">
+                        </label>
+
+                        <label for="None">None
+                            <input type="checkbox" id="None" name="None" value="None">
+                        </label>
+
+                        <p><label>Start Date:</label><input placeholder="Start Date" type="date"
+                                                            oninput="this.className = ''"></p>
+                        <p><label>End Date:</label><input placeholder="End Date" type="date"
+                                                          oninput="this.className = ''"></p>
+                        <p><label>Last PM:</label><input placeholder="Last PM" type="date"
+                                                         oninput="this.className = ''"></p>
+                        <p><label>Next PM:</label><input placeholder="Next PM" type="date"
+                                                         oninput="this.className = ''"></p>
+
+                    </div>
+
+
+                    <div class="tab-pane fade" id="notes-tab">
+                        <p><textarea id="notes-" name="notes" rows="8" cols="96"></textarea></p>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</section>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+{% endblock javascripts %}

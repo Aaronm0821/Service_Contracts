@@ -1,0 +1,188 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<head>
+    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/tab-form.css">
+</head>
+
+
+{% endblock stylesheets %}
+
+{% block content %}
+<!-- [ Main Content ]  -->
+<h1>Customer</h1>
+<section class="pcoded-main-container">
+    <div class="pcoded-wrapper pcoded-content pcoded-inner-content main-body">
+        <!-- [Place Forms Here] -->
+        <form id="regForm" method="POST">
+
+            <h3>New Customer:</h3>
+
+            <!-- One "tab" for each step in the form: -->
+            <div class="tab">Customer Details:
+                <p><label>Customer Name:</label><input class="form-control" id="customer_name" name="customer_name" placeholder="Customer Name" required></p>
+                <p><label>Department:</label><input class="form-control" id="department" name="department" placeholder="Department" required></p>
+                <p><label>Location:</label><input class="form-control" id="location" name="location" placeholder="Location" oninput="''"></p>
+            </div>
+
+            <div class="tab">Machine Information:
+                <p><label for="machine-type">Machine Type:</label>
+                            <select name="machine-type" id="machine-type">
+                                <option value="investigator">Investigator</option>
+                                <option value="multistat">Multistat</option>
+                                <option value="ev">EV</option>
+
+                            </select>
+
+                        </p>
+                <p><label>Serial Number:</label><input placeholder="Serial Number" oninput="this.className = ''"></p>
+                <p><label>Install Date:</label><input type="date" oninput="this.className = ''"></p>
+                <p><label>Site Survey OCC:</label><input placeholder="Site Survey OCC" oninput="this.className = ''">
+                </p>
+                <p><label>Install OCC:</label><input placeholder="Install OCC" oninput="this.className = ''"></p>
+            </div>
+
+            <div class="tab">Contract Information:
+                <p><label>Service Contract:</label>
+                    <br>
+
+                    <label for="Gold">Gold
+                    <input  type="checkbox" id="Gold" name="Gold" value="Gold">
+                    </label>
+
+                    <label for="Bronze">Bronze
+                    <input  type="checkbox" id="Bronze" name="Bronze" value="Bronze">
+                    </label>
+
+                    <label for="Warranty">Warranty
+                    <input  type="checkbox" id="Warranty" name="Warranty" value="Warranty">
+                    </label>
+
+                    <label for="Reagent">Reagent
+                    <input  type="checkbox" id="Reagent" name="Reagent" value="Reagent">
+                    </label>
+
+                    <label for="ARDS">ARDS
+                    <input  type="checkbox" id="ARDS" name="ARDS" value="ARDS">
+                    </label>
+
+                    <label for="Remi">Remi
+                    <input  type="checkbox" id="Remi" name="Remi" value="Remi">
+                    </label>
+
+                    <label for="None">None
+                    <input type="checkbox" id="None" name="None" value="None">
+                    </label>
+                </p>
+                <p><label>Start Date:</label><input placeholder="Start Date" type="date" oninput="this.className = ''">
+                </p>
+                <p><label>End Date:</label><input placeholder="End Date" type="date" oninput="this.className = ''"></p>
+                <p><label>Last PM:</label><input placeholder="Last PM" type="date" oninput="this.className = ''"></p>
+                <p><label>Next PM:</label><input placeholder="Next PM" type="date" oninput="this.className = ''"></p>
+            </div>
+
+            <div class="tab">Notes:
+                <p><textarea id="notes" name="notes" rows="8" cols="96"></textarea></p>
+            </div>
+
+            <div style="overflow:auto;">
+                <div style="float:right;">
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                </div>
+            </div>
+
+            <!-- Circles which indicates the steps of the form: -->
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form ...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  // ... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  // ... and run a function that displays the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form... :
+  if (currentTab >= x.length) {
+    //...the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false:
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class to the current step:
+  x[n].className += " active";
+}
+</script>
+{% endblock javascripts %}

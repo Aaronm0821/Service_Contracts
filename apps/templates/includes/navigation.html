@@ -1,0 +1,45 @@
+<!--&lt;!&ndash; [ Header ] start &ndash;&gt;-->
+<!--<header class="navbar pcoded-header navbar-expand-lg" id="main-navbar">-->
+<!--	<div class="navbar-brand header-logo mb-nav-spacing">-->
+<!--		<a href="/" class="b-brand">-->
+<!--			<div class="b-bg">-->
+<!--				<img src="{{ config.ASSETS_ROOT }}/images/logo.png" class="randox-logo">-->
+<!--			</div>-->
+<!--		</a>-->
+<!--	</div>-->
+
+
+<!--	<div class="collapse navbar-collapse" id="navbar-main">-->
+<!--		{% if user.is_authenticated %}-->
+
+<!--		<ul class="navbar-nav mr-auto">-->
+
+<!--			<li class="nav-item dropdown">-->
+<!--				<a class="dropdown-toggle" id="navbar-dd-order" data-toggle="dropdown" aria-expanded="false">Order-->
+<!--					<span class="caret"></span>-->
+<!--				</a>-->
+<!--			</li>-->
+
+
+<!--			<li class="nav-item dropdown">-->
+<!--				<a class="dropdown-toggle" id="navbar-dd-account" data-toggle="dropdown" aria-expanded="false">Account-->
+<!--					<span class="caret"></span>-->
+<!--				</a>-->
+<!--				<ul class="dropdown-menu" aria-labelledby="navbar-dd-account">-->
+<!--					{% if user.has_role("Manager") or user.has_role("Dev") %}-->
+<!--					<li><a class="dropdown-item" href="{{url_for('auth_bp.sign_up')}}"> <b>Create New User</b> </a></li>-->
+<!--					<li><a class="dropdown-item" href="{{url_for('auth_bp.change_access')}}"> <b>Change User's Access</b> </a></li>-->
+<!--					<li><a class="dropdown-item" href="{{url_for('auth_bp.reset_pwd')}}"> <b>Reset Password</b> </a></li>-->
+<!--					{%endif%}-->
+<!--					<li><a class="dropdown-item" href="{{url_for('auth_bp.change_pwd')}}"> <b>Change Password</b> </a></li>-->
+<!--				</ul>-->
+<!--			</li>-->
+
+<!--			<li class="nav-item">-->
+<!--				<a class="nav-link" href="{{url_for('auth_bp.logout')}}"><b>Logout</b></a>-->
+<!--			</li>-->
+<!--			{%endif%}-->
+<!--		</ul>-->
+<!--	</div>-->
+<!--</header>-->
+<!--&lt;!&ndash; [ Header ] end &ndash;&gt;-->

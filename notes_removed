@@ -1,0 +1,3 @@
+<!--							{%for role in current_user.roles %}-->
+<!--							<option value="{{role.id}}">{{role.RoleTitle}}</option>-->
+<!--							{%endfor%}-->

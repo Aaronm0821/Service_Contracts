@@ -1,0 +1,77 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+<!-- [ Main Content ]  -->
+<h1 align="center"></h1>
+<section class="pcoded-main-container">
+    <div class="pcoded-wrapper pcoded-content pcoded-inner-content main-body">
+        <!-- [Place Forms Here] -->
+        <form class="page-wrapper card" method="POST">
+
+            <div class="card-header">
+                <h5>Search: Customer Details</h5>
+            </div>
+                        <section class="pcoded main-container">
+                            <div class="pcoded-wrapper pcoded-content pcoded-inner-content main-body">
+            <table id="customer_table" class="display">
+                <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Department</th>
+                    <th>Location</th>
+                    <th>Machine Type</th>
+                    <th>Serial Number</th>
+                    <th>Service Contract</th>
+                    <th>Next PM</th>
+                    <th>More Details</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in customer_table %}
+                <tr>
+
+                    <td>{{ row['customer_name'] }} </td>
+                    <td>{{ row['department'] }}</td>
+                    <td>{{ row['location'] }}</td>
+                    <td>{{ row['machine_type'] }}</td>
+                    <td>{{ row['serial_number'] }}</td>
+                    <td>{{ row['service_contract'] }}</td>
+                    <td>{{ row['next_PM'] }}</td>
+                    <td>
+                        <button formaction="{{url_for('customers_bp.customer_details', machine_id=row['machine_id'] )}}"
+                           class="btn btn-success" >Details</button>
+                    </td>
+
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+    </div>
+</section>
+
+
+
+</form>
+</div>
+</section>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#customer_table').DataTable();
+    });
+</script>
+
+{% endblock javascripts %}
